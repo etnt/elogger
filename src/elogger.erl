@@ -10,7 +10,7 @@
 %%%              permanent, 2000, worker, [logger]},
 %%%
 %%%    start_errlog() ->
-%%%        Opts = [{name, logger},
+%%%        Opts = [{name, elogger},
 %%%                {file, "./elog"},
 %%%                {type, wrap},
 %%%                {format, external},
@@ -54,6 +54,8 @@
 
 -define(LOG(Format,Args),
 	error_logger:info_msg(Format, Args)).
+
+-define(DISK_LOG, {disk_log_h, ?MODULE}).
 
 %%%----------------------------------------------------------------------
 %%% API
@@ -154,14 +156,14 @@ add_error_logger_mf({File, MaxB, MaxF}, Type) ->
 		    {format, external},
 		    {size, {MaxB, MaxF}}],
 	    gen_event:add_sup_handler(error_logger,
-				      {disk_log_h, ?MODULE},
+				      ?DISK_LOG,
 				      disk_log_h:init(form_func(Type), Opts));
 	true ->
 	    ok
     end.
 
 delete_error_logger_mf() ->
-    gen_event:delete_handler(error_logger, {disk_log_h, ?MODULE}, stop).
+    gen_event:delete_handler(error_logger, ?DISK_LOG, stop).
 
 form_func(all) -> {?MODULE, form_all};
 form_func(_)   -> {?MODULE, form_no_progress}.
