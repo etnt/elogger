@@ -2,7 +2,7 @@
 
 elogger is a disk based, file wrapping, error_logger.
 
-''elogger.erl'' is identical to the ''logger.erl'' module from jungerl.
+*elogger.erl* is identical to the *logger.erl* module from jungerl.
 It has been renamed and put at github for convenient usage by
 other Erlang github project.
 
@@ -26,7 +26,7 @@ from your supervisor. Example:
              [Elogger
              ]}}.
 
-Use the following configurations parameters in your `.app` files
+Use the following configurations parameters in your `.app` file
 to control the name, size and number of logfiles.
 
     {env, [
