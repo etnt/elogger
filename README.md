@@ -6,7 +6,7 @@ elogger is a disk based, file wrapping, error_logger.
 It has been renamed and put at github for convenient usage by
 other Erlang github project.
 
-To set it up: add it it as a git submodule and make sure the
+To set it up: add it as a git submodule and make sure the
 Erlang path is including its `ebin` directory. Then start it
 from your supervisor. Example:
 
