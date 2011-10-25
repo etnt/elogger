@@ -1,0 +1,13 @@
+%%-*- mode: erlang -*-
+{application, elogger,
+ [
+  {description, ""},
+  {vsn, "1.2"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { elogger, []}},
+  {env, []}
+ ]}.

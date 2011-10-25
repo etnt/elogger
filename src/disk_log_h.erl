@@ -30,7 +30,7 @@
 -export([init/2, info/2, change_size/3]).
 
 %% gen_event callbacks
--export([init/1, handle_event/2, handle_call/2, handle_info/2, terminate/2]).
+-export([init/1, handle_event/2, handle_call/2, handle_info/2, terminate/2, code_change/3]).
 
 -record(state, {cnt, func}).
 
@@ -172,6 +172,12 @@ handle_info(_Info, S) ->
 %%----------------------------------------------------------------------
 terminate(_Arg, _S) ->
     disk_log:ll_close(get(log)).
+
+%%--------------------------------------------------------------------
+%% Description: Convert process state when code is changed
+%%--------------------------------------------------------------------
+code_change(_OldVsn, State, _Extra) ->
+	{ok, State}.
 
 %%%----------------------------------------------------------------------
 %%% Internal functions
