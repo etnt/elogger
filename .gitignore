@@ -1,1 +1,3 @@
-ebin/*.beam
+*/*.beam
+.DS_Store
+*/*.app
