@@ -171,8 +171,8 @@ add_error_logger_mf({File, MaxB, MaxF}, Type) ->
 delete_error_logger_mf() ->
     gen_event:delete_handler(error_logger, ?DISK_LOG, stop).
 
-form_func(all) -> {?MODULE, form_all};
-form_func(_)   -> {?MODULE, form_no_progress}.
+form_func(all) -> fun form_all/1;
+form_func(_)   -> fun form_no_progress/1.
 
 form_all({_Type, GL, _Msg}) when node(GL) /= node() ->
     false;
